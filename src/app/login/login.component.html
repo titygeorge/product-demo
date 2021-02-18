@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row row-header">
+		<div class="col-sm-4">
+			<div class="login">
+			  <h2 class="main">Log in</h2>
+			  <form [formGroup]="loginForm" class="login-section" (ngSubmit)="login()">
+
+			    <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+			      <input type="email" placeholder="Email" class="form-control" formControlName="email">
+			    </p>
+
+			    <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
+			      <div *ngIf="formControls.email.errors.required">Email is required</div>
+                  <div *ngIf="formControls.email.errors.pattern">Please enter a valid Login Id</div>
+			    </div>
+
+			    <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
+			      <input type="password" placeholder="Password" class="form-control" formControlName="password">
+			    </p>
+
+			    <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
+			      <div *ngIf="formControls.password.errors.required">Password is required</div>
+			      <div *ngIf="formControls.password.errors.minlength">Password must be at least 8 characters</div>
+			      <div *ngIf="formControls.password.errors.pattern">Please enter a valid password with atleast one number and one capital letter</div>
+			    </div>
+
+			    <p>
+			      <!-- <input type="submit" value="Log in"> -->
+			      <button class="btn btn-primary">Log in</button>
+			    </p>
+			  </form>
+			</div>
+		</div>
+	</div>
+</div>

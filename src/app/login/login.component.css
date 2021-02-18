@@ -1,0 +1,15 @@
+.container {
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.row-header {
+	display: flex;
+    justify-content: center;
+}
+.col-sm-4 {
+	border: 1px solid lightgray;
+    padding: 25px;
+}
