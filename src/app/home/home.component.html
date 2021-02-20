@@ -1,60 +1,74 @@
 
 <div class="container">
+	<div class="col-sm-12 aRight">
+	<button class="btn btn-primary" (click)="logout()">
+      Logout
+    </button> 
+	</div>
 	<div class="row">
 		<div class="col-sm-12">
 			<h3>Product Details</h3>
 			<hr>
-			<!-- <div class="row">
-			  <div class="col-xs-12 col-12 col-md-4 form-group">
-			    <input type="text"
-			           placeholder="Datepicker"
-			           class="form-control"
-			           bsDatepicker>
+			<div class="row col-sm-12">
+			  <div class="col-sm-3 form-group">
+			  	<form >
+			    <input
+			    	name="date"
+			        class="form-control" 			        
+			        #datepickerFull="bsDatepicker"
+			        bsDatepicker
+			        (ngModelChange)="changeDate($event)"
+      				[(ngModel)]="currentDate"
+      				[daysDisabled]="[3,4]"
+			        [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY, h a' }" >
+			    </form>
 			  </div>
-			</div> -->
-			<table class="table tbale-bordered table-striped">
-				<thead>
-					<th>Id</th>
-					<th></th>
-					<th>Product Name</th>
-					<th>Cost</th>
-					<th>Availability</th>
-					<th>Preparation Time</th>
-				</thead>
-				<tbody>
-					<tr *ngFor="let info of data">
-						<td>{{info.p_id}}</td>
-						<td>
-							<div *ngIf="info.p_name == 'Apple'">
-								<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Single_apple.png" width="30px">
+			</div>
+			<div class="col-sm-3" *ngFor="let info of data;let i = index">
+				<div class="card">
+				  	<div class="card-header">
+				  		<div class="col-sm-4">
+				  			<div *ngIf="info.p_name == 'Apple'">
+								<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Single_apple.png" width="22px">
 							</div>
 							<div *ngIf="info.p_name == 'Mango'">
 								<img src="https://static.wixstatic.com/media/2cd43b_5bfcda5812cf4f6cbbc883b4c99dde25~mv2.png/v1/fill/w_320,h_293,fp_0.50_0.50/2cd43b_5bfcda5812cf4f6cbbc883b4c99dde25~mv2.png" width="30px">
 							</div>
-							<div *ngIf="info.p_name == 'Bananna'">
+							<div *ngIf="info.p_name == 'Banana'">
 								<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScG6kVE0BZr8s7F2iXJCF-arDP6swNYdO32A&usqp=CAU" width="30px">
 							</div>
 							<div *ngIf="info.p_name == 'Orange'">
 								<img src="https://clipartart.com/images/clipart-opranges-1.png" width="30px">
 							</div>
-							
-						</td>
-						<td>{{info.p_name}}</td>
-						<td>{{info.p_cost}}</td>
-						<td>{{info.p_availability}}</td>
-						<td>{{info.p_details.preparation_time}}</td>
-					</tr>
-				</tbody>
-			</table>
-			<!-- <ul>
-				<li *ngFor="let info of data">
-					{{info.p_name}}
-				</li>
-			</ul> -->
+				  		</div>
+				  		<div class="col-sm-8">
+				  			<h3 class="card-title">{{info.p_name}}</h3>
+				  		</div>
+				  	
+				  	</div>
+				  <div class="card-body">
+				    <div class="card-text">
+				    	<div class="row">
+				    		<div class="col-sm-7">Cost</div>
+				    		<div class="col-sm-5">: {{info.p_cost}}</div>
+				    	</div>
+				    	<div class="row">
+				    		<div class="col-sm-7">Availability</div>
+				    		<div class="col-sm-5">: {{info.p_availability}}</div>
+				    	</div>
+				    	<div class="row">
+				    		<div class="col-sm-7">Preparation time</div>
+				    		<div class="col-sm-5">: {{info.p_details.preparation_time}}</div>
+				    	</div>
+				    	<div class="row">
+				    		<div class="col-sm-7">Delivery on</div>
+				    		<div class="col-sm-5">: {{daysArray[productsAndDeliveryTime[i].deliveryDay].name}} <br> time-{{productsAndDeliveryTime[i].delivery_time}}</div>
+				    	</div>
+				     </div>
+				  </div>
+			  </div>
+			</div>
+
 		</div>
 	</div>
 </div>
-<!-- 
-<button (click)="logout()">
-      Logout
-    </button> -->

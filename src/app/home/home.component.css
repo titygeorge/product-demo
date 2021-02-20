@@ -1,3 +1,15 @@
 .container {
 	margin-top: 30px;
 }
+.card-header {
+    height: 40px;
+}
+.card-text div {
+    font-size: 15px;
+}
+.aRight {
+	text-align: right;
+}
+input {
+    font-size: 13px;
+}
